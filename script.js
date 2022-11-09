@@ -12,6 +12,7 @@ let roundP2 = document.getElementById("roundP2");
 let activePlayer = 1;
 
 //------------------ Functions used later ---------------
+
 // Switch the player display depending on the situation
 let switchPlayer = () => {
   if (activePlayer == 1) {
@@ -70,11 +71,33 @@ let rollfunction = () => {
   }
 };
 
+let holdFunction = () => {
+  let totalGlobalP1 = globalP1.textContent;
+  let totalGlobalP2 = globalP2.textContent;
+
+  if (activePlayer == 1 && globalP1 + roundP1 < 100) {
+    globalP1.textContent = +totalGlobalP1 + +roundP1.textContent;
+    roundP1.textContent = "0";
+    activePlayer = 2;
+    switchPlayer();
+  } else if (activePlayer == 1 && globalP1 + roundP1 >= 100) {
+    activePlayer = 1;
+    alert("P1 t'as gagné mon pote !");
+    gameReset();
+  } else if (activePlayer == 2 && globalP2 + roundP2 < 100) {
+    globalP2.textContent = +totalGlobalP2 + +roundP2.textContent;
+    roundP2.textContent = "0";
+    activePlayer = 1;
+    switchPlayer();
+  } else if (activePlayer == 2 && globalP2 + roundP2 >= 100) {
+    activePlayer = 2;
+    alert("Le joueur 2 a gagné cette manche !");
+    gameReset();
+  }
+};
+
 hold.addEventListener("click", () => {
-  let totalGlobal = globalP1.textContent;
-  globalP1.textContent = +totalGlobal + +roundP1.textContent;
-  roundP1.textContent = "0";
-  console.log("HOLD");
+  holdFunction();
 });
 
 roll.addEventListener("click", () => {
