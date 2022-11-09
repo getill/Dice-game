@@ -49,7 +49,7 @@ let rollfunction = () => {
     roll.textContent = "ROLL DICE !";
     // puts the number into the current score
     let totalCurrentP1 = roundP1.textContent;
-    // I had to put a "+" to make the addition possible beacause rounsP2.textContent is a string
+    // I had to put a "+" to make the addition possible beacause rounsP2.textContent is a string, the + is here to convert a string into a number
     roundP1.textContent = +totalCurrentP1 + +diceNumber;
     switchPlayer();
   } else if (activePlayer == 1 && diceNumber == 1) {
@@ -74,28 +74,33 @@ let rollfunction = () => {
 let holdFunction = () => {
   let totalGlobalP1 = globalP1.textContent;
   let totalGlobalP2 = globalP2.textContent;
-
-  if (activePlayer == 1 && globalP1 + roundP1 < 100) {
+  let numberRoundP1 = roundP1.textContent;
+  let numberRoundP2 = roundP2.textContent;
+  if (activePlayer == 1 && +totalGlobalP1 + +numberRoundP1 < 100) {
     globalP1.textContent = +totalGlobalP1 + +roundP1.textContent;
     roundP1.textContent = "0";
     activePlayer = 2;
     switchPlayer();
-  } else if (activePlayer == 1 && globalP1 + roundP1 >= 100) {
+  } else if (activePlayer == 1 && +totalGlobalP1 + +numberRoundP1 >= 100) {
     activePlayer = 1;
     alert("P1 t'as gagné mon pote !");
     gameReset();
-  } else if (activePlayer == 2 && globalP2 + roundP2 < 100) {
+  } else if (activePlayer == 2 && +totalGlobalP2 + +numberRoundP2 < 100) {
     globalP2.textContent = +totalGlobalP2 + +roundP2.textContent;
     roundP2.textContent = "0";
     activePlayer = 1;
     switchPlayer();
-  } else if (activePlayer == 2 && globalP2 + roundP2 >= 100) {
+  } else if (activePlayer == 2 && +totalGlobalP2 + +numberRoundP2 >= 100) {
     activePlayer = 2;
-    alert("Le joueur 2 a gagné cette manche !");
+    alert(
+      "Le joueur 2 a gagné cette manche ! (De toute façon c'était mon préféré"
+    );
     gameReset();
   }
+  console.log("round P1 : " + roundP1.textContent);
 };
 
+// Every buttons holding every functions
 hold.addEventListener("click", () => {
   holdFunction();
 });
