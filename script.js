@@ -11,7 +11,8 @@ let roundP2 = document.getElementById("roundP2");
 //------------------------Game variables---------------
 let activePlayer = 1;
 
-function switchPlayer() {
+// Switch the player display depending on the situation
+let switchPlayer = () => {
   if (activePlayer == 1) {
     player1.style.opacity = "1";
     player2.style.opacity = "0.3";
@@ -19,7 +20,7 @@ function switchPlayer() {
     player1.style.opacity = "0.3";
     player2.style.opacity = "1";
   }
-}
+};
 
 // Roll logic
 let rollfunction = () => {
