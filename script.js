@@ -33,6 +33,12 @@ let rollfunction = () => {
     activePlayer = activePlayer + 1;
     player1.style.opacity = "0.3";
     player2.style.opacity = "1";
+  } else if (activePlayer == 2 && diceNumber > 1) {
+    let totalCurrentP2 = roundP2.textContent;
+    roundP2.textContent = +totalCurrentP2 + +diceNumber;
+  } else {
+    roundP2.textContent = "0";
+    activePlayer = activePlayer - 1;
   }
 };
 
