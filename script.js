@@ -1,4 +1,4 @@
-//------------------------Get element variables---------------
+//------------------------ Get element variables ---------------
 let newGame = document.getElementById("new-game");
 let roll = document.getElementById("roll");
 let hold = document.getElementById("hold");
@@ -8,10 +8,12 @@ let roundP1 = document.getElementById("roundP1");
 let globalP2 = document.getElementById("globalP2");
 let roundP2 = document.getElementById("roundP2");
 
-//------------------------Game variables---------------
+//------------------------ Game variables ---------------
 let activePlayer = 1;
 
-function switchPlayer() {
+//------------------ Functions used later ---------------
+// Switch the player display depending on the situation
+let switchPlayer = () => {
   if (activePlayer == 1) {
     player1.style.opacity = "1";
     player2.style.opacity = "0.3";
@@ -19,8 +21,20 @@ function switchPlayer() {
     player1.style.opacity = "0.3";
     player2.style.opacity = "1";
   }
-}
+};
 
+let gameReset = () => {
+  // rewrite everything to "0"
+  roundP1.textContent = "0";
+  globalP1.textContent = "0";
+  roundP2.textContent = "0";
+  globalP2.textContent = "0";
+  // Force player one display
+  activePlayer = 1;
+  switchPlayer();
+};
+
+//-------------- Main functions --------
 // Roll logic
 let rollfunction = () => {
   // Generates a random number between 1 to 6
@@ -68,5 +82,5 @@ roll.addEventListener("click", () => {
 });
 
 newGame.addEventListener("click", () => {
-  console.log("NEW GAME");
+  gameReset();
 });
