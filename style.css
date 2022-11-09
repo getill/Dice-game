@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
+
+body {
+  margin: 0px;
+  overflow: hidden;
+  font-family: 'Lato', sans-serif;
+  background-image: url(images/GameBackground.png);
+  background-size: cover;
+  background-position: center;
+}
+
+img {
+  height: 300px;
+  width: 300px;
+  padding: 200px 0px 150px 0px;
+}
+
+.roll-dice {
+  padding-bottom: 25px;
+}
+
+.NewGame {
+  font-size: 50px;
+}
+
+.gameContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+#player1, #player2, #center {
+  font-size: 50px;
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.score {
+  color: red;
+  font-size: 100px;
+  font-weight: 300;
+  display: flex;
+  margin-bottom: 250px;
+}
+
+.cText {
+  font-size: 30px;
+}
+
+.current {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background: rgb(226, 226, 187);
+  height: 125px;
+  width: 350px;
+}
