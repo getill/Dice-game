@@ -9,12 +9,13 @@
   <title>Dice Game</title>
 </head>
 <body>
+  <div id="player-background"></div>
   <!-- This is whre the whole game is contained -->
   <div class="gameContainer"> 
     
     <!-- Player one content -->
     <div id="player1">
-      <h2 class="fw-bold">PLAYER 1</h2>
+      <h2>PLAYER 1</h2>
       <span class="score" id="globalP1">0</span>
       <div class="current">
         <span class="cText">Current :</span>
@@ -24,10 +25,10 @@
     
     <!-- Center content -->
     <div id="center">
-      <span class="NewGame" id="new-game">NEW GAME</span>
+      <button class="NewGame" id="new-game" type="button">NEW GAME</button>
       <img alt="Dice" id="img" src="./images/1.png">
-      <span class="roll-dice" id="roll">ROLL DICE !</span>
-      <span id="hold">HOLD</span>
+      <button class="roll-dice" id="roll" type="button">ROLL DICE !</button>
+      <button id="hold" type="button">HOLD</button>
     </div>
 
     <!-- Player two content -->

@@ -4,9 +4,9 @@ body {
   margin: 0px;
   overflow: hidden;
   font-family: 'Lato', sans-serif;
-  background-image: url(images/GameBackground.png);
+  /* background-image: url(images/GameBackground.png);
   background-size: cover;
-  background-position: center;
+  background-position: center; */
 }
 
 img {
@@ -15,13 +15,17 @@ img {
   padding: 200px 0px 150px 0px;
 }
 
+button {
+  background: none;
+  border: 0;
+  font-size: 50px;
+}
+
 .roll-dice {
   padding-bottom: 25px;
 }
 
-.NewGame {
-  font-size: 50px;
-}
+
 
 .gameContainer {
   display: flex;
@@ -30,6 +34,15 @@ img {
   align-content: center;
   height: 100vh;
   width: 100vw;
+  z-index: 5;
+}
+
+#player-background {
+  position: absolute;
+  height: 100vh;
+  width: 50vw;
+  background: paleturquoise;
+  z-index: -5;
 }
 
 #player1, #player2, #center {
