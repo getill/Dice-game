@@ -97,7 +97,6 @@ let holdFunction = () => {
     );
     gameReset();
   }
-  console.log("round P1 : " + roundP1.textContent);
 };
 
 // Every buttons holding every functions
