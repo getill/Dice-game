@@ -34,15 +34,9 @@ let backgroundP2 = anime({
 // Switch the player display depending on the situation
 function switchPlayer() {
   if (activePlayer == 1) {
-    backgroundP1.play();
-    backgroundTarget2.style.opacity = "0";
-    backgroundTarget1.style.opacity = "1";
     player1.style.opacity = "1";
     player2.style.opacity = "0.3";
   } else {
-    backgroundP2.play();
-    backgroundTarget1.style.opacity = "0";
-    backgroundTarget2.style.opacity = "1";
     player1.style.opacity = "0.3";
     player2.style.opacity = "1";
   }
@@ -57,11 +51,17 @@ let gameReset = () => {
   // Force player one display
   activePlayer = 1;
   switchPlayer();
-  backgroundTarget1.style.opacity = "0";
+  backgroundP1.play();
+  backgroundTarget1.style.opacity = "1";
   backgroundTarget2.style.opacity = "0";
 };
 
 //--------------------- Main functions ----------------------
+
+window.addEventListener("load", () => {
+  backgroundP1.play();
+  backgroundTarget1.style.opacity = "1";
+});
 
 // Roll logic
 let rollfunction = () => {
@@ -80,6 +80,9 @@ let rollfunction = () => {
     roundP1.textContent = +totalCurrentP1 + +diceNumber;
     switchPlayer();
   } else if (activePlayer == 1 && diceNumber == 1) {
+    backgroundP2.play();
+    backgroundTarget1.style.opacity = "0";
+    backgroundTarget2.style.opacity = "1";
     // Switch player if dice = 1
     roll.textContent = "NEXT PLAYER";
     roundP1.textContent = "0";
@@ -91,6 +94,9 @@ let rollfunction = () => {
     let totalCurrentP2 = roundP2.textContent;
     roundP2.textContent = +totalCurrentP2 + +diceNumber;
   } else {
+    backgroundP1.play();
+    backgroundTarget2.style.opacity = "0";
+    backgroundTarget1.style.opacity = "1";
     // Switch to player 1 if player 2 get "1"
     roundP2.textContent = "0";
     roll.textContent = "NEXT PLAYER";
@@ -108,19 +114,22 @@ let holdFunction = () => {
     globalP1.textContent = +totalGlobalP1 + +roundP1.textContent;
     roundP1.textContent = "0";
     activePlayer = 2;
+    backgroundP2.play();
+    backgroundTarget1.style.opacity = "0";
+    backgroundTarget2.style.opacity = "1";
     switchPlayer();
-    // background.play();
   } else if (activePlayer == 1 && +totalGlobalP1 + +numberRoundP1 >= 100) {
     activePlayer = 1;
     alert("P1 t'as gagné mon pote !");
     gameReset();
-    // background.reverse();
   } else if (activePlayer == 2 && +totalGlobalP2 + +numberRoundP2 < 100) {
     globalP2.textContent = +totalGlobalP2 + +roundP2.textContent;
     roundP2.textContent = "0";
     activePlayer = 1;
     switchPlayer();
-    // background.reverse();
+    backgroundP1.play();
+    backgroundTarget2.style.opacity = "0";
+    backgroundTarget1.style.opacity = "1";
   } else if (activePlayer == 2 && +totalGlobalP2 + +numberRoundP2 >= 100) {
     activePlayer = 2;
     alert(
