@@ -37,12 +37,26 @@ button {
   z-index: 5;
 }
 
-#player-background {
-  position: absolute;
+#player-backgroundP1 {
+  opacity: 0;
+  position:fixed;
+  right: 0;
   height: 100vh;
   width: 50vw;
   background: paleturquoise;
   z-index: -5;
+}
+#player-backgroundP2 {
+  opacity: 0;
+  position: absolute;
+  height: 100vh;
+  width: 50vw;
+  background: palegoldenrod;
+  z-index: -5;
+}
+
+.bg-container {
+  display: flex;
 }
 
 #player1, #player2, #center {

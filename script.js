@@ -7,17 +7,26 @@ let globalP1 = document.getElementById("globalP1");
 let roundP1 = document.getElementById("roundP1");
 let globalP2 = document.getElementById("globalP2");
 let roundP2 = document.getElementById("roundP2");
-let backgroundTarget = document.getElementById("player-background");
+let backgroundTarget1 = document.getElementById("player-backgroundP1");
+let backgroundTarget2 = document.getElementById("player-backgroundP2");
 //------------------------ Game variables ---------------
 let activePlayer = 1;
 
 //----------------------------PLAYGROUND---------------------
 
-let background = anime({
-  targets: backgroundTarget,
-  translateX: "50vw",
+let backgroundP1 = anime({
+  targets: backgroundTarget1,
+  translateX: "-50vw",
   autoplay: false,
   backgroundColor: "#676790",
+  loop: 0,
+});
+let backgroundP2 = anime({
+  targets: backgroundTarget2,
+  translateX: "50vw",
+  autoplay: false,
+  backgroundColor: "#048090",
+  loop: 0,
 });
 
 //------------------ Functions used later ---------------
@@ -25,11 +34,15 @@ let background = anime({
 // Switch the player display depending on the situation
 function switchPlayer() {
   if (activePlayer == 1) {
-    // background.reverse();
+    backgroundP1.play();
+    backgroundTarget2.style.opacity = "0";
+    backgroundTarget1.style.opacity = "1";
     player1.style.opacity = "1";
     player2.style.opacity = "0.3";
   } else {
-    // background.play();
+    backgroundP2.play();
+    backgroundTarget1.style.opacity = "0";
+    backgroundTarget2.style.opacity = "1";
     player1.style.opacity = "0.3";
     player2.style.opacity = "1";
   }
@@ -44,6 +57,8 @@ let gameReset = () => {
   // Force player one display
   activePlayer = 1;
   switchPlayer();
+  backgroundTarget1.style.opacity = "0";
+  backgroundTarget2.style.opacity = "0";
 };
 
 //--------------------- Main functions ----------------------
@@ -64,10 +79,8 @@ let rollfunction = () => {
     // I had to put a "+" to make the addition possible beacause rounsP2.textContent is a string, the + is here to convert a string into a number
     roundP1.textContent = +totalCurrentP1 + +diceNumber;
     switchPlayer();
-    // background.play();
   } else if (activePlayer == 1 && diceNumber == 1) {
     // Switch player if dice = 1
-    // background.play();
     roll.textContent = "NEXT PLAYER";
     roundP1.textContent = "0";
     activePlayer = activePlayer + 1;
@@ -77,10 +90,8 @@ let rollfunction = () => {
     roll.textContent = "ROLL DICE !";
     let totalCurrentP2 = roundP2.textContent;
     roundP2.textContent = +totalCurrentP2 + +diceNumber;
-    // background.play();
   } else {
     // Switch to player 1 if player 2 get "1"
-    // background.reverse();
     roundP2.textContent = "0";
     roll.textContent = "NEXT PLAYER";
     activePlayer = activePlayer - 1;
