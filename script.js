@@ -9,6 +9,9 @@ let globalP2 = document.getElementById("globalP2");
 let roundP2 = document.getElementById("roundP2");
 let backgroundTarget1 = document.getElementById("player-backgroundP1");
 let backgroundTarget2 = document.getElementById("player-backgroundP2");
+let GameContainer = document.querySelector(".gameContainer");
+let start = document.getElementById("start");
+let intro = document.getElementById("intro");
 //------------------------ Game variables ---------------
 let activePlayer = 1;
 
@@ -18,14 +21,14 @@ let backgroundP1 = anime({
   targets: backgroundTarget1,
   translateX: "-50vw",
   autoplay: false,
-  backgroundColor: "#676790",
+  backgroundColor: "#FFC857",
   loop: 0,
 });
 let backgroundP2 = anime({
   targets: backgroundTarget2,
   translateX: "50vw",
   autoplay: false,
-  backgroundColor: "#048090",
+  backgroundColor: "#119da4",
   loop: 0,
 });
 
@@ -57,10 +60,26 @@ let gameReset = () => {
 };
 
 //--------------------- Main functions ----------------------
-
-window.addEventListener("load", () => {
+start.addEventListener("click", () => {
   backgroundP1.play();
   backgroundTarget1.style.opacity = "1";
+  intro.remove();
+  anime({
+    targets: GameContainer,
+    translateY: 0,
+    delay: 1000,
+  });
+});
+window.addEventListener("load", () => {
+  backgroundTarget1.style.opacity = "1";
+  anime({
+    targets: GameContainer,
+    translateY: [0, "-100vw"],
+  });
+  anime({
+    targets: intro,
+    translateY: ["-100vw", "50vh"],
+  });
 });
 
 // Roll logic

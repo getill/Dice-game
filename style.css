@@ -37,6 +37,13 @@ button {
   z-index: 5;
 }
 
+#intro {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 #player-backgroundP1 {
   opacity: 0;
   position:fixed;
@@ -70,7 +77,7 @@ button {
 
 
 .score {
-  color: red;
+  color: black;
   font-size: 100px;
   font-weight: 300;
   display: flex;
@@ -86,6 +93,7 @@ button {
   align-items: center;
   justify-content: space-evenly;
   background: rgb(226, 226, 187);
+  border-radius: 30px;
   height: 125px;
   width: 350px;
 }
