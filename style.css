@@ -4,9 +4,6 @@ body {
   margin: 0px;
   overflow: hidden;
   font-family: 'Lato', sans-serif;
-  /* background-image: url(images/GameBackground.png);
-  background-size: cover;
-  background-position: center; */
 }
 
 img {
@@ -25,7 +22,31 @@ button {
   padding-bottom: 25px;
 }
 
+h2 {
+  font-size: 100px;
+}
 
+.rules {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem;
+}
+
+#intro button {
+  --c: #1095c1; /* the color */
+  
+  color: #0000;
+  background: 
+    linear-gradient(90deg,#fff 50%,var(--c) 0) calc(100% - var(--_p,0%))/200%,
+    linear-gradient(var(--c) 0 0) 0% 100%/var(--_p,0%) no-repeat,
+    var(--_c,#0000);
+  -webkit-background-clip: text,padding-box,padding-box;
+          background-clip: text,padding-box,padding-box;
+  transition: 0s ,color .5s,background-color .5s;
+}
 
 .gameContainer {
   display: flex;
@@ -37,11 +58,23 @@ button {
   z-index: 5;
 }
 
+
+#intro button:hover {
+  color: #fff;
+  --_c: var(--c);
+  --_p: 100%;
+  transition: 0.5s,color 0s .5s,background-color 0s .5s;
+}
+
+
 #intro {
+  height: 100vh;
+  width: 50vw;
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: space-evenly;
+  z-index: -4;
 }
 
 #player-backgroundP1 {
@@ -50,7 +83,7 @@ button {
   right: 0;
   height: 100vh;
   width: 50vw;
-  background: paleturquoise;
+  background: #119da4;
   z-index: -5;
 }
 #player-backgroundP2 {

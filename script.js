@@ -60,6 +60,19 @@ let gameReset = () => {
 };
 
 //--------------------- Main functions ----------------------
+window.addEventListener("load", () => {
+  backgroundTarget1.style.opacity = "1";
+  anime({
+    targets: GameContainer,
+    translateY: [0, "-100vw"],
+    opacity: 0,
+  });
+  anime({
+    targets: intro,
+    translateX: ["-50%", 0],
+  });
+});
+
 start.addEventListener("click", () => {
   backgroundP1.play();
   backgroundTarget1.style.opacity = "1";
@@ -68,17 +81,7 @@ start.addEventListener("click", () => {
     targets: GameContainer,
     translateY: 0,
     delay: 1000,
-  });
-});
-window.addEventListener("load", () => {
-  backgroundTarget1.style.opacity = "1";
-  anime({
-    targets: GameContainer,
-    translateY: [0, "-100vw"],
-  });
-  anime({
-    targets: intro,
-    translateY: ["-100vw", "50vh"],
+    opacity: 1,
   });
 });
 
