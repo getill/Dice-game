@@ -15,7 +15,7 @@ let intro = document.getElementById("intro");
 //------------------------ Game variables ---------------
 let activePlayer = 1;
 
-//----------------------------PLAYGROUND---------------------
+//---------------------------- BACKGROUND ANIMATION ---------------------
 
 let backgroundP1 = anime({
   targets: backgroundTarget1,
@@ -31,6 +31,8 @@ let backgroundP2 = anime({
   backgroundColor: "#119da4",
   loop: 0,
 });
+
+//---------------------------- INTRODUCTION EVENTS ---------------------
 
 window.addEventListener("load", () => {
   GameContainer.style.opacity = "0";
@@ -61,7 +63,11 @@ start.addEventListener("click", () => {
   setTimeout("loadSound()", 800);
 });
 
-//------------------ Functions used later ---------------
+start.addEventListener("mouseover", () => {
+  hoverSound();
+});
+
+//------------------ FUNCTIONS USED LATER ---------------
 
 // Switch the player display depending on the situation
 function switchPlayer() {
@@ -99,12 +105,20 @@ let random = (max) => {
 const rollSound = () => {
   const audio = new Audio();
   audio.src = "Sounds/Roll/" + random(6) + ".wav";
+  audio.volume = 0.5;
   audio.play();
 };
 
 const startSound = () => {
   const audio = new Audio();
   audio.src = "Sounds/start.wav";
+  audio.play();
+};
+
+const hoverSound = () => {
+  const audio = new Audio();
+  audio.src = "Sounds/hover.wav";
+  audio.volume = 0.3;
   audio.play();
 };
 
@@ -140,7 +154,7 @@ const holdSound = () => {
   audio.play();
 };
 
-//--------------------- Main functions ----------------------
+//--------------------- MAIN FUNCTIONS ----------------------
 
 // Roll logic
 let rollfunction = () => {
@@ -224,7 +238,7 @@ let holdFunction = () => {
   }
 };
 
-//--------------------- Buttons ----------------------------
+//--------------------- BUTTONS ----------------------------
 // Every buttons holding every functions
 hold.addEventListener("click", () => {
   holdSound();
