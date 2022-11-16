@@ -32,6 +32,35 @@ let backgroundP2 = anime({
   loop: 0,
 });
 
+window.addEventListener("load", () => {
+  GameContainer.style.opacity = "0";
+  backgroundTarget1.style.opacity = "1";
+  anime({
+    targets: GameContainer,
+    translateY: [0, "-300vw"],
+  });
+  anime({
+    targets: intro,
+    opacity: [0, 1],
+    duration: 15000,
+  });
+});
+
+start.addEventListener("click", () => {
+  backgroundP1.play();
+  backgroundTarget1.style.opacity = "1";
+  intro.remove();
+  anime({
+    targets: GameContainer,
+    translateY: 0,
+    delay: 500,
+    duration: 1500,
+    opacity: 1,
+  });
+  startSound();
+  setTimeout("loadSound()", 800);
+});
+
 //------------------ Functions used later ---------------
 
 // Switch the player display depending on the situation
@@ -59,31 +88,59 @@ let gameReset = () => {
   backgroundTarget2.style.opacity = "0";
 };
 
-//--------------------- Main functions ----------------------
-window.addEventListener("load", () => {
-  backgroundTarget1.style.opacity = "1";
-  anime({
-    targets: GameContainer,
-    translateY: [0, "-100vw"],
-    opacity: 0,
-  });
-  anime({
-    targets: intro,
-    translateX: ["-50%", 0],
-  });
-});
+// Generate a random number, max is defined by the function later (+1 to avoid 0)
+let random = (max) => {
+  return Math.floor(Math.random() * max + 1);
+};
 
-start.addEventListener("click", () => {
-  backgroundP1.play();
-  backgroundTarget1.style.opacity = "1";
-  intro.remove();
-  anime({
-    targets: GameContainer,
-    translateY: 0,
-    delay: 1000,
-    opacity: 1,
-  });
-});
+//-------------------------- AUDIO SECTION ----------------------
+
+// Random audio play function
+const rollSound = () => {
+  const audio = new Audio();
+  audio.src = "Sounds/Roll/" + random(6) + ".wav";
+  audio.play();
+};
+
+const startSound = () => {
+  const audio = new Audio();
+  audio.src = "Sounds/start.wav";
+  audio.play();
+};
+
+const newGameSound = () => {
+  const audio = new Audio();
+  audio.src = "Sounds/newGame.wav";
+  audio.play();
+};
+
+const loadSound = () => {
+  const audio = new Audio();
+  audio.src = "Sounds/load.wav";
+  audio.play();
+};
+
+const winSound = () => {
+  const audio = new Audio();
+  audio.src = "Sounds/win.wav";
+  audio.play();
+};
+
+const looseSound = () => {
+  const audio = new Audio();
+  audio.src = "Sounds/loose.wav";
+  audio.volume = 0.7;
+  audio.play();
+};
+
+const holdSound = () => {
+  const audio = new Audio();
+  audio.src = "Sounds/hold.wav";
+  audio.volume = 0.3;
+  audio.play();
+};
+
+//--------------------- Main functions ----------------------
 
 // Roll logic
 let rollfunction = () => {
@@ -95,6 +152,7 @@ let rollfunction = () => {
   document.querySelector("img").setAttribute("src", randomImg);
 
   if (activePlayer == 1 && diceNumber > 1) {
+    rollSound();
     roll.textContent = "ROLL DICE !";
     // puts the number into the current score
     let totalCurrentP1 = roundP1.textContent;
@@ -102,6 +160,7 @@ let rollfunction = () => {
     roundP1.textContent = +totalCurrentP1 + +diceNumber;
     switchPlayer();
   } else if (activePlayer == 1 && diceNumber == 1) {
+    looseSound();
     backgroundP2.play();
     backgroundTarget1.style.opacity = "0";
     backgroundTarget2.style.opacity = "1";
@@ -111,11 +170,13 @@ let rollfunction = () => {
     activePlayer = activePlayer + 1;
     switchPlayer();
   } else if (activePlayer == 2 && diceNumber > 1) {
+    rollSound();
     // Put score into P2 section
     roll.textContent = "ROLL DICE !";
     let totalCurrentP2 = roundP2.textContent;
     roundP2.textContent = +totalCurrentP2 + +diceNumber;
   } else {
+    looseSound();
     backgroundP1.play();
     backgroundTarget2.style.opacity = "0";
     backgroundTarget1.style.opacity = "1";
@@ -142,6 +203,7 @@ let holdFunction = () => {
     switchPlayer();
   } else if (activePlayer == 1 && +totalGlobalP1 + +numberRoundP1 >= 100) {
     activePlayer = 1;
+    winSound();
     alert("P1 t'as gagné mon pote !");
     gameReset();
   } else if (activePlayer == 2 && +totalGlobalP2 + +numberRoundP2 < 100) {
@@ -154,6 +216,7 @@ let holdFunction = () => {
     backgroundTarget1.style.opacity = "1";
   } else if (activePlayer == 2 && +totalGlobalP2 + +numberRoundP2 >= 100) {
     activePlayer = 2;
+    winSound();
     alert(
       "Le joueur 2 a gagné cette manche ! (De toute façon c'était mon préféré"
     );
@@ -164,6 +227,7 @@ let holdFunction = () => {
 //--------------------- Buttons ----------------------------
 // Every buttons holding every functions
 hold.addEventListener("click", () => {
+  holdSound();
   holdFunction();
 });
 
@@ -172,5 +236,6 @@ roll.addEventListener("click", () => {
 });
 
 newGame.addEventListener("click", () => {
+  newGameSound();
   gameReset();
 });

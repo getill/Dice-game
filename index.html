@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <title>Dice Game</title>
 </head>
 <body>
@@ -15,8 +15,8 @@
   </div>
 
   <div id="intro">
-    <h2>DICE ?</h2>
-    <button type="button" id="start">DICE !</button>
+    <h2>ROLL DICE ?</h2>
+    <button type="button" id="start">--- ROLL DICE ! ---</button>
     <div class="rules">
       <h3>Les règles</h3>
       <p>Les joueurs vont pouvoir lancer le dé plusieurs fois durant leur tour de jeu.
@@ -31,37 +31,45 @@
     </div>
   </div>
   <!-- This is whre the whole game is contained -->
-  <div class="gameContainer"> 
-    
-    <!-- Player one content -->
-    <div id="player1">
-      <h2>PLAYER 1</h2>
-      <span class="score" id="globalP1">0</span>
-      <div class="current">
-        <span class="cText">Current :</span>
-        <span id="roundP1">0</span>
-      </div>
-    </div>
-    
-    <!-- Center content -->
+  <div class="gameContainer d-flex vh-100 align-items-center justify-content-center"> 
 
-    <div id="center">
-      <button class="NewGame" id="new-game" type="button">NEW GAME</button>
-      <img alt="Dice" id="img" src="./images/1.png">
-      <button class="roll-dice" id="roll" type="button">ROLL DICE !</button>
-      <button id="hold" type="button">HOLD</button>
+    <div class="d-flex text-center fs-1">
+    <div class="row d-flex justify-content-between align-items-center vw-100 vh-100">
+  
+        <!-- Player one content -->
+        <div class="col d-flex flex-column justify-content-evenly vh-100 align-items-center" id="player1">
+          <h2>PLAYER 1</h2>
+          <span class="score" id="globalP1">0</span>
+          <div class="current">
+            <span class="cText">Current :</span>
+            <span id="roundP1">0</span>
+          </div>
+        </div>
+        
+        <!-- Center content -->
+    
+        <div class="col d-flex flex-column justify-content-evenly vh-100 align-items-center img-fluid fw-bold align-self-center" id="center">
+          <button class="NewGame" id="new-game" type="button">NEW GAME</button>
+          <img class="mx-auto d-block" alt="Dice" id="img" src="./images/1.png">
+          <button class="roll-dice" id="roll" type="button">ROLL DICE !</button>
+          <button id="hold" type="button">HOLD</button>
+        </div>
+    
+        <!-- Player two content -->
+        <div class="col d-flex flex-column justify-content-evenly vh-100 align-items-center" id="player2">
+          <h2>PLAYER 2</h2>
+          <span class="score" id="globalP2">0</span>
+          <div class="current">
+            <span class="cText">Current :</span>
+            <span id="roundP2">0</span>
+          </div>
+        </div>
+  
+      </div>
+      
     </div>
 
-    <!-- Player two content -->
-    <div id="player2">
-      <h2>PLAYER 2</h2>
-      <span class="score" id="globalP2">0</span>
-      <div class="current">
-        <span class="cText">Current :</span>
-        <span id="roundP2">0</span>
-      </div>
     </div>
-  </div>
 
     <script src="./node_modules/animejs/lib/anime.min.js"></script>
     <script src="./script.js"></script>
