@@ -12,7 +12,18 @@ let backgroundTarget2 = document.getElementById("player-backgroundP2");
 let GameContainer = document.querySelector(".gameContainer");
 let start = document.getElementById("start");
 let intro = document.getElementById("intro");
+
+//---------------------------- BOOTSTRAP MODAL VARIABLES ---------------------
+
+let P1Win = new bootstrap.Modal(document.getElementById("P1Win"), {
+  keyboard: false,
+});
+let P2Win = new bootstrap.Modal(document.getElementById("P2Win"), {
+  keyboard: false,
+});
+
 //------------------------ Game variables ---------------
+
 let activePlayer = 1;
 
 //---------------------------- BACKGROUND ANIMATION ---------------------
@@ -218,7 +229,7 @@ let holdFunction = () => {
   } else if (activePlayer == 1 && +totalGlobalP1 + +numberRoundP1 >= 100) {
     activePlayer = 1;
     winSound();
-    alert("P1 t'as gagné mon pote !");
+    P1Win.show();
     gameReset();
   } else if (activePlayer == 2 && +totalGlobalP2 + +numberRoundP2 < 100) {
     globalP2.textContent = +totalGlobalP2 + +roundP2.textContent;
@@ -231,9 +242,7 @@ let holdFunction = () => {
   } else if (activePlayer == 2 && +totalGlobalP2 + +numberRoundP2 >= 100) {
     activePlayer = 2;
     winSound();
-    alert(
-      "Le joueur 2 a gagné cette manche ! (De toute façon c'était mon préféré"
-    );
+    P2Win.show();
     gameReset();
   }
 };

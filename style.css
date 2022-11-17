@@ -11,7 +11,6 @@
   }
 }
 
-
 body {
   margin: 0px;
   overflow: hidden;
@@ -29,9 +28,8 @@ button {
   font-size: 50px;
 }
 
-
 h2 {
-  font-size: 100px;
+  font-size: 50px !important;
 }
 
 .rules {
@@ -62,7 +60,6 @@ h2 {
   --_p: 100%;
   transition: 0.5s,color 0s .5s,background-color 0s .5s;
 }
-
 
 #intro {
   height: 100vh;
@@ -97,17 +94,14 @@ h2 {
   display: flex;
 }
 
-.score {
-  /* color: black;
-  font-size: 100px;
-  font-weight: 300;
-  display: flex;
-  margin-bottom: 250px; */
-}
-
 .current {
   width: 250px;
   height: 100px;
-  background: rgb(226, 226, 187);
+  padding: 19px 0 !important;
+  background: rgba(231, 231, 231, 0.377);
   border-radius: 30px;
+}
+
+.score {
+  font-size: 75px;
 }
