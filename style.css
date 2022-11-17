@@ -21,7 +21,6 @@ body {
 img {
   height: 300px;
   width: 300px;
-  /* padding: 200px 0px 150px 0px; */
 }
 
 button {
@@ -30,9 +29,6 @@ button {
   font-size: 50px;
 }
 
-.roll-dice {
-  /* padding-bottom: 25px; */
-}
 
 h2 {
   font-size: 100px;
@@ -48,31 +44,20 @@ h2 {
 }
 
 #intro button {
-  --c: #1095c1; /* the color */
+  --c: #FFF; /* the color */
   
   color: #0000;
   background: 
-    linear-gradient(90deg,#fff 50%,var(--c) 0) calc(100% - var(--_p,0%))/200%,
+    linear-gradient(90deg, black 50%,#FFF 0) calc(100% - var(--_p,0%))/200%,
     linear-gradient(var(--c) 0 0) 0% 100%/var(--_p,0%) no-repeat,
-    var(--_c,#0000);
+    var(--_c,#119da4);
   -webkit-background-clip: text,padding-box,padding-box;
           background-clip: text,padding-box,padding-box;
   transition: 0s ,color .5s,background-color .5s;
 }
 
-.gameContainer {
-  /* display: flex;
-  justify-content: space-around;
-  align-items: center;
-  align-content: center; */
-  /* height: 100vh;
-  width: 100vw; */
-  z-index: 5;
-}
-
-
 #intro button:hover {
-  color: #fff;
+  color: black;
   --_c: var(--c);
   --_p: 100%;
   transition: 0.5s,color 0s .5s,background-color 0s .5s;
@@ -82,11 +67,11 @@ h2 {
 #intro {
   height: 100vh;
   width: 50vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   z-index: -4;
+}
+
+.gameContainer {
+  z-index: 5;
 }
 
 #player-backgroundP1 {
@@ -98,6 +83,7 @@ h2 {
   background: #119da4;
   z-index: -5;
 }
+
 #player-backgroundP2 {
   opacity: 0;
   position: absolute;
@@ -111,16 +97,6 @@ h2 {
   display: flex;
 }
 
-#player1, #player2, #center {
-  /* font-size: 50px;
-  font-weight: 300; */
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
-}
-
-
 .score {
   /* color: black;
   font-size: 100px;
@@ -129,15 +105,7 @@ h2 {
   margin-bottom: 250px; */
 }
 
-.cText {
-  /* font-size: 30px; */
-}
-
 .current {
-  /* display: flex;
-  align-items: center;
-  justify-content: space-evenly;*/
-  
   width: 250px;
   height: 100px;
   background: rgb(226, 226, 187);
