@@ -118,3 +118,25 @@ h2 {
 .score {
   font-size: 75px;
 }
+
+.gameContainer button {
+  background:
+    linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      #2E282A
+  );
+  background-size: 100% 3px, 0 3px;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
+}
+
+.gameContainer button:hover {
+  background-size: 0 3px, 100% 3px;
+}
