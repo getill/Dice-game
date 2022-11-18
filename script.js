@@ -1,4 +1,4 @@
-//------------------------ Get element variables ---------------
+//------------------------ GET ELEMENT VARIABLES ---------------
 let newGame = document.getElementById("new-game");
 let roll = document.getElementById("roll");
 let hold = document.getElementById("hold");
@@ -22,7 +22,7 @@ let P2Win = new bootstrap.Modal(document.getElementById("P2Win"), {
   keyboard: false,
 });
 
-//------------------------ Game variables ---------------
+//------------------------ GAME VARIABLES ---------------
 
 let activePlayer = 1;
 
@@ -248,6 +248,7 @@ let holdFunction = () => {
 };
 
 //--------------------- BUTTONS ----------------------------
+
 // Every buttons holding every functions
 hold.addEventListener("click", () => {
   holdSound();
