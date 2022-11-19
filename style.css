@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
 
+
+/* Black screen under 1000vw */
+
 @media only screen and (max-width: 1000px) {
   /* For mobile phones and tablet users: */
   body {
@@ -24,6 +27,7 @@
   display: none;
 }
 
+
 body {
   margin: 0px;
   overflow: hidden;
@@ -45,26 +49,18 @@ h2 {
   font-size: 50px !important;
 }
 
-.rules {
-  box-sizing: content-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 5rem;
-}
+/* Intro */
 
 #intro button {
   --c: #FFF; /* the color */
   
   color: #0000;
   background: 
-    linear-gradient(90deg, black 50%,#FFF 0) calc(100% - var(--_p,0%))/200%,
-    linear-gradient(var(--c) 0 0) 0% 100%/var(--_p,0%) no-repeat,
-    var(--_c,#119da4);
+  linear-gradient(90deg, black 50%,#FFF 0) calc(100% - var(--_p,0%))/200%,
+  linear-gradient(var(--c) 0 0) 0% 100%/var(--_p,0%) no-repeat,
+  var(--_c,#119da4);
   -webkit-background-clip: text,padding-box,padding-box;
-          background-clip: text,padding-box,padding-box;
+  background-clip: text,padding-box,padding-box;
   transition: 0s ,color .5s,background-color .5s;
 }
 
@@ -82,9 +78,17 @@ h2 {
   z-index: -4;
 }
 
-.gameContainer {
-  z-index: 5;
+.rules {
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem;
 }
+
+/* Game */
 
 #player-backgroundP1 {
   opacity: 0;
@@ -103,6 +107,10 @@ h2 {
   width: 50vw;
   background: palegoldenrod;
   z-index: -5;
+}
+
+.gameContainer {
+  z-index: 5;
 }
 
 .bg-container {
